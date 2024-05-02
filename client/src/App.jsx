@@ -23,8 +23,11 @@ function App() {
   return (
     <>
       <h1>Blog App</h1>
-      <Link to="/create">Create</Link>
       <BlogCard blogs={blogs}/>
+      <Link to="/create" className='bg-blue-500'>Create</Link>
+
+      
+
     </>
   )
 }

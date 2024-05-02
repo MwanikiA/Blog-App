@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .serializer import BlogSerializer
 from .models import Blog
 from rest_framework.response import Response
@@ -36,17 +36,17 @@ def create(request):
         return Response({"message" : "Create a blog"})
     
 
-
+@api_view(["GET", "PUT"])
 def update(request, id):
-    blog = get_object_or_404(Blog, id=id)
+    blog = get_object_or_404(Blog, pk=id)
     serializer = BlogSerializer(instance=blog, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response({"message": "Blog updated successfully"})
     
-    
-def delete(request):
-    blog = get_object_or_404(Blog, id=id)
+@api_view(["DELETE"])    
+def delete(request, id):
+    blog = get_object_or_404(Blog, pk=id)
     blog.delete()
     return Response({"message": "Blog deleted successfully"})
 

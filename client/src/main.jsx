@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import Create from './pages/create.jsx'
+import Update from './pages/update.jsx'
 
 const paths = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const paths = createBrowserRouter([
   {
     path: "/create",
     element: <Create/>
+  },
+  {
+    path: "/update",
+    element: <Update/>
   }
 ])
 
